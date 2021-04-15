@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  subplay:
+    restart: always
+    env_file: .env
+    image: btwiuse/subplay
+    volumes:
+    - ./entrypoint.rc:/entrypoint.rc
+    - ./state/subplay:/data/state/subplay
+    ports:
+    - "${PORT}:${PORT}"
+    - "${WS_PORT}:${WS_PORT}"
+    - "${RPC_PORT}:${RPC_PORT}"
+    - "${PROM_PORT}:${PROM_PORT}"
+    entrypoint: [ "bash", "-c" ]
+    command:
+    - source /entrypoint.rc && exec_subplay

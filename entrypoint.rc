@@ -1,0 +1,18 @@
+exec_subplay(){
+  exec subplay \
+    --base-path state/subplay \
+    --port "${PORT}" \
+    --ws-port "${WS_PORT}" \
+    --rpc-port "${RPC_PORT}" \
+    --prometheus-port "${PROM_PORT}" \
+    --validator \
+    --bootnodes /ip4/207.148.101.172/tcp/10222/p2p/12D3KooWEXLBScA3NhFGPgubdESwNkyQCUrzbHWYGQfu5RmyEZjs \
+    --telemetry-url="wss://telemetry.polkadot.io/submit/ 0" \
+    --name="btwiuse" \
+    --rpc-cors=all \
+    --rpc-methods=Unsafe \
+    --prometheus-external \
+    --unsafe-ws-external \
+    --chain=customSpecRaw.json \
+    "$@"
+}
